@@ -26,7 +26,7 @@ class Contact
  
     def find(index)
       # TODO: Will find and return contact by index
-      ContactDatabase.read_contact[index]
+
     end
  
     def all
@@ -37,9 +37,12 @@ class Contact
     
     def show(id)
       # TODO: Show a contact, based on ID
-      
+      contacts = ContactDatabase.read_contact
+      id = id - 1
+      contacts.each_with_index do |detail, index|
+      puts index.to_s + ": " + detail.join(",")  if id == index
     end
-    
+    end
   end
  
 end

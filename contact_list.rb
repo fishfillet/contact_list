@@ -29,6 +29,7 @@ when command[0] == "show"
   index = STDIN.gets.chomp
   puts Contact.show(index.to_i)
 
+
 end
 
 end
