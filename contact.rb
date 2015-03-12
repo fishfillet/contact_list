@@ -26,7 +26,11 @@ class Contact
  
     def find(index)
       # TODO: Will find and return contact by index
-
+      catalog = ContactDatabase::read
+      
+      catalog.each_with_index do |row,index| 
+  
+        row.grep( Regexp.new( string , "i") ) != [] ? row.each{|i| puts"#{i}"} : "Contact not found" 
     end
  
     def all
