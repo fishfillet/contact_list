@@ -1,4 +1,3 @@
-require_relative 'contact_database'
 
 class Contact
  
@@ -20,17 +19,18 @@ class Contact
     def create(name, email)
       # TODO: Will initialize a contact as well as add it to the list of contacts
       # new_contact = Contact.new(name, email)
-      ContactDatabase.write_contact(name, Email)
-
+      ContactDatabase.write_contact(name, email)
     end
  
     def find(index)
       # TODO: Will find and return contact by index
-      catalog = ContactDatabase::read
-      
-      catalog.each_with_index do |row,index| 
-  
-        row.grep( Regexp.new( string , "i") ) != [] ? row.each{|i| puts"#{i}"} : "Contact not found" 
+      array = []
+      contacts = ContactDatabase.read_contact
+      contacts.each do |item|
+      item = item.to_s
+       array << item if item.include? index
+      end
+      puts array
     end
  
     def all
@@ -42,10 +42,10 @@ class Contact
     def show(id)
       # TODO: Show a contact, based on ID
       contacts = ContactDatabase.read_contact
-      id = id - 1
+      # id = id + 1
       contacts.each_with_index do |detail, index|
-      puts index.to_s + ": " + detail.join(",")  if id == index
-    end
+      puts index.to_s + ": " + detail.to_s  if id == index   #detail.join(", ")
+      end
     end
   end
  

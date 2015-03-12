@@ -5,15 +5,22 @@ class ContactDatabase
 
   class << self
     def write_contact(name, email)
+      new_contact = Contact.new(name, email) #didn't create a new instance of Contact
       CSV.open('contacts.csv', 'a') do |row|
-        row << [name, email]
+        row << [new_contact.name, new_contact.email]  
       end
     end
 
     def read_contact
-      CSV.open('contacts.csv', 'r') do |row|
-        row.read
+      arr = []
+      CSV.foreach('contacts.csv', 'r') do |row|
+        name = row[0]
+        email = row[1]
+        temp = Contact.new(name, email)
+        # row.read
+        arr << temp
       end
+      arr
     end
   end
 

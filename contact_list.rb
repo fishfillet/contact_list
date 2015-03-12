@@ -1,8 +1,6 @@
 require_relative 'contact'
 require_relative 'contact_database'
 
-
-
 def start(command)
   case 
   when command[0] == "help"
