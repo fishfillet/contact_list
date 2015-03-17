@@ -2,6 +2,7 @@ require_relative 'contact'
 require_relative 'contact_database'
 
 def start(command)
+  puts "Reading from #{ContactDatabase::CSV_FILE}" #test
   case 
   when command[0] == "help"
     puts "Here is a list of available commands:
