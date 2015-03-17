@@ -12,11 +12,13 @@ def start(command)
        find - Find a contact"
 
   when command[0] == "new"
-    puts "Enter name: "
-    contact = STDIN.gets.chomp
+    puts "Enter first name: "
+    firstname = STDIN.gets.chomp
+    puts "Enter last name: "
+    lastname = STDIN.gets.chomp
     puts "Enter email: "
     email = STDIN.gets.chomp
-    Contact.create(contact, email)
+    Contact.create(firstname, lastname, email)
 
   when command[0] == "list"
     Contact.all
