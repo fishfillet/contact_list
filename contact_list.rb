@@ -30,10 +30,7 @@ def start(command)
     puts "enter something"
     index = STDIN.gets.chomp.downcase
     puts Contact.find(index)
-
-
   end
-
 end
 
 start(ARGV)

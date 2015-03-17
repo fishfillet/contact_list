@@ -1,4 +1,3 @@
-
 class Contact
  
   attr_accessor :name, :email
@@ -48,5 +47,4 @@ class Contact
       end
     end
   end
- 
 end
