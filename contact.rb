@@ -1,4 +1,13 @@
+require 'pg'
+
 class Contact
+
+   CONN = PG::Connection.new({
+                                host: 'ec2-54-221-249-3.compute-1.amazonaws.com',
+                                user: 'esqjcdxmjhpbsx',
+                                password: 'nJp2-XfHFMXD4PpElV7Ikm3UhL',
+                                dbname: 'd1btka6k630gln'
+                            })
  
   attr_accessor :name, :email
 
@@ -47,4 +56,5 @@ class Contact
       end
     end
   end
+  puts CONN
 end
