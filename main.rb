@@ -1,7 +1,7 @@
-require './contact'
+# require './contact'
 
-# ben = Contact.new('Bob', 'Tem', 'Bob@tem.com')
-# ben.save
+# # ben = Contact.new('Bob', 'Tem', 'Bob@tem.com')
+# # ben.save
 
-contact3 = Contact.find(3)
-contact3.destroy
+# contact3 = Contact.find_by_email('daniel@daniel.com')
+# puts contact3.inspect

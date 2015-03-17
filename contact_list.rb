@@ -1,8 +1,8 @@
 require_relative 'contact'
-require_relative 'contact_database'
+# require_relative 'contact_database'
 
 def start(command)
-  puts "Reading from #{ContactDatabase::CSV_FILE}" #test
+  # puts "Reading from #{ContactDatabase::CSV_FILE}" #test
   case 
   when command[0] == "help"
     puts "Here is a list of available commands:
@@ -18,7 +18,8 @@ def start(command)
     lastname = STDIN.gets.chomp
     puts "Enter email: "
     email = STDIN.gets.chomp
-    Contact.create(firstname, lastname, email)
+    enter = Contact.new(firstname, lastname, email)
+    enter.save
 
   when command[0] == "list"
     Contact.all

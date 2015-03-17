@@ -52,7 +52,35 @@ class Contact
     result
   end
 
- 
+ def self.find_all_by_last_name(name)
+    results = []
+    CONN.exec_params('SELECT id, firstname, lastname, email FROM contacts WHERE lastname = $1', [name]) do |rows|
+      rows.each do |row|
+        results << Contact.new(row['firstname'], row['lastname'], row['email'], row['id'])
+      end
+    end
+    results
+  end 
+
+   def self.find_all_by_first_name(name)
+    results = []
+    CONN.exec_params('SELECT id, firstname, lastname, email FROM contacts WHERE firstname = $1', [name]) do |rows|
+      rows.each do |row|
+        results << Contact.new(row['firstname'], row['lastname'], row['email'], row['id'])
+      end
+    end
+    results
+  end 
+
+   def self.find_by_email(email)
+    results = []
+    CONN.exec_params('SELECT id, firstname, lastname, email FROM contacts WHERE email = $1', [email]) do |rows|
+      rows.each do |row|
+        results << Contact.new(row['firstname'], row['lastname'], row['email'], row['id'])
+      end
+    end
+    results
+  end 
 
 
 
