@@ -52,6 +52,17 @@ class Contact
     result
   end
 
+  def self.list
+    results = []
+    CONN.exec_params('SELECT * FROM contacts') do |rows|
+      rows.each do |row|
+        results << Contact.new(row['firstname'], row['lastname'], row['email'], row['id'])
+      end
+    end
+    results  
+  end
+
+
  def self.find_all_by_last_name(name)
     results = []
     CONN.exec_params('SELECT id, firstname, lastname, email FROM contacts WHERE lastname = $1', [name]) do |rows|
