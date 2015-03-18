@@ -20,6 +20,10 @@ class Contact
     @id = id
   end
 
+  def display
+    puts "id: #{id} // Name: #{firstname} #{lastname} // Email: #{email}"
+  end
+
   def is_new?
     @id.nil?
   end
