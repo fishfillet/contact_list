@@ -20,8 +20,21 @@ ActiveRecord::Base.establish_connection(
 
 puts "CONNECTED"
 
+# ActiveRecord::Schema.define do
+#   drop_table :contacts if ActiveRecord::Base.connection.table_exists?(:contacts)
+#   create_table :contacts do |t|
+#     t.column :firstname, :string
+#     t.column :lastname, :string
+#     t.column :email, :string
+#     t.column :phone_number, :integer
+#     t.timestamps
+#   end
+# end
+
 class Contact < ActiveRecord::Base
 
-  validates :firstname, :lastname, :email, presence: true
+  validates :firstname, :lastname, :email, :phone_number, presence: true
+  validates :phone_number, length: { minimum: 7 }
+  validates :email, uniqueness: true
 
 end

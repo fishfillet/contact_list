@@ -24,27 +24,30 @@ def start(command)
     lastname = STDIN.gets.chomp
     puts "Enter email: "
     email = STDIN.gets.chomp
-    enter = Contact.create(firstname: firstname, lastname: lastname, email: email)
+    puts "Enter phone number: "
+    phone_number = STDIN.gets.chomp
+    enter = Contact.create(firstname: firstname, lastname: lastname, email: email, phone_number: phone_number)
     enter.save
+    puts enter.errors.messages
 
   when command[0] == "list" 
     list = Contact.all
     list.each do |contact|
-      puts "Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // id: #{contact.id}"
+      puts "ID: #{contact.id} // Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // Phone Number: #{contact.phone_number}"
     end
 
   when command[0] == "find"
     puts "Enter id: "
     index = STDIN.gets.chomp
     contact = Contact.find(index)
-    puts "Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // id: #{contact.id}"
+    puts "ID: #{contact.id} // Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // Phone Number: #{contact.phone_number}"
 
   when command[0] == "firstname"
     puts "enter a first name"
     index = STDIN.gets.chomp
     contact = Contact.where(firstname: index)
     contact.each do |contact|
-      puts "Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // id: #{contact.id}"
+      puts "ID: #{contact.id} // Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // Phone Number: #{contact.phone_number}"
     end
 
   when command[0] == "lastname"
@@ -52,14 +55,14 @@ def start(command)
     index = STDIN.gets.chomp
     contact = Contact.where(lastname: index)
     contact.each do |contact|
-      puts "Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // id: #{contact.id}"
+      puts "ID: #{contact.id} // Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // Phone Number: #{contact.phone_number}"
     end
   when command[0] == "email"
     puts "enter an email address"
     index = STDIN.gets.chomp
     contact = Contact.where(email: index)
     contact.each do |contact|
-      puts "Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // id: #{contact.id}"
+      puts "ID: #{contact.id} // Name: #{contact.firstname} #{contact.lastname} // Email: #{contact.email} // Phone Number: #{contact.phone_number}"
     end
   end
 end
